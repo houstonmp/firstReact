@@ -4,10 +4,67 @@ import './ExpenseForm.css';
 
 
 function ExpenseForm() {
+    //State is stored and survives any rerendering of the component
+    //This isn't terrible. You will see it like this although it is verbose...
+    // const [enteredTitle, setEnteredTitle] = useState('');
+    // const [enteredAmount, setEnteredAmount] = useState('');
+    // const [enteredDate, setEnteredDate] = useState('');
+
+    // const titleChangeHandler = (event) => {
+    //     setEnteredTitle(event.target.value);
+    // }
+    // const amountChangeHandler = (event) => {
+    //     setEnteredTitle(event.target.value);
+    // }
+    // const dateChangeHandler = (event) => {
+    //     setEnteredTitle(event.target.value);
+    // }
+
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        enteredAmount: '',
+        enteredDate: ''
+    });
 
     const titleChangeHandler = (event) => {
-        console.log(event.target.value);
+
+        // No good! You shouldn't do this instead do the following.
+        //This might call an outdated snapshot
+        // setUserInput({
+        //     ...userInput, //spreads object across the value
+        //     enteredTitle: event.target.value, //changes the enteredTitle
+        // })
+
+        //prevState calls the state before, ALWAYS calls the latest snapshot
+        //Memorize: if your state object depends on the previous state you should use this form. Otherwise you might get errors or outdated errors
+        setUserInput((prevState) => {
+            return { ...prevState, enteredTitle: event.target.value };
+        });
     }
+
+    const amountChangeHandler = (event) => {
+        // setUserInput({
+        //     ...userInput,
+        //     enteredAmount: event.target.value,
+        // })
+        setUserInput((prevState) => {
+            return { ...prevState, enteredAmount: event.target.value };
+        });
+    }
+    const dateChangeHandler = (event) => {
+        // setUserInput({
+        //     ...userInput,
+        //     enteredDate: event.target.value,
+        // })
+        setUserInput((prevState) => {
+            return { ...prevState, enteredDate: event.target.value };
+        });
+    }
+
+
+
+
+
     return (
         <form>
             <div className='new-expense__controls'>
@@ -17,13 +74,13 @@ function ExpenseForm() {
                 </div>
                 <div className='new-expense__control'>
                     <label>Amount</label>
-                    <input type="number" min="0.01" max="0.01" />
+                    <input type="number" min="0.01" max="0.01" onChange={amountChangeHandler} />
                 </div>
 
 
                 <div className='new-expense__control'>
                     <label>Date</label>
-                    <input type="date" min="2019-01-01" max="2022-12-31" />
+                    <input type="date" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler} />
                 </div>
 
             </div>
