@@ -1,3 +1,4 @@
+
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import "./Expenses.css"
@@ -5,6 +6,7 @@ import "./ExpenseFilter.css"
 import ExpenseFilter from './ExpenseFilter';
 
 function Expenses(props) {
+
 
     //Attempt to add ExpenseItem components dynamically
     // const renderExpenseItem = () => {
@@ -21,18 +23,16 @@ function Expenses(props) {
     }
 
     return (
-        <div>
-
-
-            <Card className="expenses">
+        <Card className="expenses">
+            <div>
                 <ExpenseFilter className="expenses-filter" onSelectYear={yearHandler} />
-                {/* {renderExpenseItem()} */}
-                <ExpenseItem title={props.expenseArr[0].title} amount={props.expenseArr[0].amount} date={props.expenseArr[0].date}></ExpenseItem>
-                <ExpenseItem title={props.expenseArr[1].title} amount={props.expenseArr[1].amount} date={props.expenseArr[1].date}></ExpenseItem>
-                <ExpenseItem title={props.expenseArr[2].title} amount={props.expenseArr[2].amount} date={props.expenseArr[2].date}></ExpenseItem>
-                <ExpenseItem title={props.expenseArr[3].title} amount={props.expenseArr[3].amount} date={props.expenseArr[3].date}></ExpenseItem>
-            </Card>
-        </div>
+            </div>
+            {/* {renderExpenseItem()} */}
+            <ExpenseItem title={props.expenseArr[0].title} amount={props.expenseArr[0].amount} date={props.expenseArr[0].date}></ExpenseItem>
+            <ExpenseItem title={props.expenseArr[1].title} amount={props.expenseArr[1].amount} date={props.expenseArr[1].date}></ExpenseItem>
+            <ExpenseItem title={props.expenseArr[2].title} amount={props.expenseArr[2].amount} date={props.expenseArr[2].date}></ExpenseItem>
+            <ExpenseItem title={props.expenseArr[3].title} amount={props.expenseArr[3].amount} date={props.expenseArr[3].date}></ExpenseItem>
+        </Card>
     );
 }
 
