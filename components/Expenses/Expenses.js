@@ -1,4 +1,4 @@
-
+import React, { useState } from 'react';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import "./Expenses.css"
@@ -6,7 +6,7 @@ import "./ExpenseFilter.css"
 import ExpenseFilter from './ExpenseFilter';
 
 function Expenses(props) {
-
+    const [chosenYear, setYear] = useState('2020');
 
     //Attempt to add ExpenseItem components dynamically
     // const renderExpenseItem = () => {
@@ -19,13 +19,14 @@ function Expenses(props) {
     // }
 
     const yearHandler = (selectedYear) => {
+        setYear(selectedYear);
         console.log('In Expense.js:', selectedYear);
     }
 
     return (
         <Card className="expenses">
             <div>
-                <ExpenseFilter className="expenses-filter" onSelectYear={yearHandler} />
+                <ExpenseFilter selected={chosenYear} onSelectYear={yearHandler} />
             </div>
             {/* {renderExpenseItem()} */}
             <ExpenseItem title={props.expenseArr[0].title} amount={props.expenseArr[0].amount} date={props.expenseArr[0].date}></ExpenseItem>
