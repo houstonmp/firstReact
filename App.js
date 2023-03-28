@@ -36,14 +36,14 @@ function App() {
 
   const addExpenseHandler = (expense) => {
     setExpenseArr((prevState) => {
-      return [...prevState, expense]
+      return [expense, ...prevState];
     });
   }
 
   return (
     <div>
       <h2>Expenses</h2>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <NewExpense arrLength={expenseArr.length} onAddExpense={addExpenseHandler} />
       <Expenses expenseArr={expenseArr} />
     </div>
   );

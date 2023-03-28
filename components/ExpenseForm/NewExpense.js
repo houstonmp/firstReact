@@ -8,7 +8,7 @@ function NewExpense(props) {
 
     const saveExpenseDataHandler = (enteredExpenseData) => {
         const expenseData = {
-            id: Math.random().toString(),
+            id: `e${props.arrLength + 1}`,
             ...enteredExpenseData,
         };
         props.onAddExpense(expenseData);
