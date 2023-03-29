@@ -6,7 +6,7 @@ import NewExpense from './components/ExpenseForm/NewExpense';
 const INITIAL_EXPENSES = [
   {
     id: 'e1',
-    title: 'Toilet Paper',
+    title: 'Lamp',
     amount: 94.12,
     date: new Date(2020, 7, 14),
   },
