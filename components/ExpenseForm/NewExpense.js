@@ -6,6 +6,9 @@ import ExpenseForm from './ExpenseForm'
 
 function NewExpense(props) {
 
+
+
+
     const saveExpenseDataHandler = (enteredExpenseData) => {
         const expenseData = {
             id: `e${props.arrLength + 1}`,
@@ -13,6 +16,9 @@ function NewExpense(props) {
         };
         props.onAddExpense(expenseData);
     }
+
+
+
     return (
         <div className='new-expense'>
             <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
